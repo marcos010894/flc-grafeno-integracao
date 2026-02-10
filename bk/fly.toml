@@ -1,0 +1,25 @@
+app = 'flc-bank-api'
+primary_region = 'gru'
+
+[build]
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '512mb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[env]
+  DATABASE_URL = "mysql+pymysql://u580641237_flc:Mito010894!!@193.203.175.123:3306/u580641237_flc"
+  JWT_SECRET_KEY = "flc-bank-super-secret-key-2024-change-in-production"
+  JWT_ALGORITHM = "HS256"
+  JWT_ACCESS_TOKEN_EXPIRE_MINUTES = "30"
+  JWT_REFRESH_TOKEN_EXPIRE_DAYS = "7"
+  ENVIRONMENT = "production"
